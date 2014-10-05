@@ -1,0 +1,36 @@
+div.container-fluid
+    div.row
+        div.col-sm-12
+            h1
+                |Try out the webScraper by filling in the form below
+            form(name='form')
+                div.form-group
+                    label(for='site-url-input')
+                        |Site URL 
+                        span(ng-show='form.url.$dirty && form.url.$invalid')
+                            span.label.label-danger(ng-show="form.url.$error.required")
+                                |URL Required
+                            span.label.label-danger(ng-show="form.url.$error.url")
+                                |URL Invalid
+                    input(type='url', id='site-url-input', name='url', required, ng-model='scrape.url').form-control
+                div.form-group
+                    label(for='class-input')
+                        |Class 
+                        span(ng-show='form.class.$dirty && form.class.$invalid')
+                            span.label.label-danger(ng-show="form.class.$error.required")
+                                |URL Required
+                            span.label.label-danger(ng-show="form.class.$error.text")
+                                |URL Invalid
+                    input(type='text', id='class-input', name='class', required, ng-model='scrape.class').form-control
+                div.form-group
+                    label(for='scraper-module-input')
+                        |Custome Scraper Module
+                    textarea(type='text', id='scraper-module-input', ng-model='scrape.function').form-control
+                button(ng-click='submit(scrape)', ng-disabled='form.$invalid || !form.$dirty').btn.btn-default
+                    |Submit
+    div.row
+        div.col-sm-12
+            h1
+                |Results
+            pre
+                |{{result}}

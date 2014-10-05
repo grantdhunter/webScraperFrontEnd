@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        meta(charset='utf8')
+        base(href='/')
+        title seedApp 
+        //css libraries
+        link(rel='stylesheet', href='bootstrap/dist/css/bootstrap.css')
+        //js libraries
+        script(src='/jquery/dist/jquery.min.js')
+        script(src='/angular/angular.min.js')
+        script(src='/angular-route/angular-route.min.js')
+        script(src='/angular-resource/angular-resource.min.js')
+        //custom js
+        script(src='/system/app.js')
+        //controllers
+        script(src='/system/controllers/appCtrl.js')
+        script(src='/system/controllers/homeCtrl.js')
+        //services
+        script(src='/system/services/services.js')
+    body(ng-controller="appCtrl")
+         div(ng-include="'/partials/header.jade'")
+         div(ng-view)
+

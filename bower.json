@@ -1,0 +1,24 @@
+{
+  "name": "seedApp",
+  "version": "0.0.1",
+  "authors": [
+    "grantdhunter <gr@nt-hunter.ca>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.25",
+    "angular-route": "~1.2.25",
+    "angular-resource": "~1.2.26"
+  },
+  "resolutions": {
+    "angular": "~1.2.25"
+  }
+}

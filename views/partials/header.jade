@@ -1,0 +1,16 @@
+nav.navbar.navbar-default
+    div.container-fluid
+        div.navbar-header
+            a.navbar-brand(href='/',ng-click="setCurrentPage('/')") 
+                |{{siteTitle}}
+            h3.navbar-text.pulse
+                |{{currentPage.title}}
+            button(type='button', data-toggle='collapse' data-target='#navbar-collapse').navbar-toggle.collapsed
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+        div.collapse.navbar-collapse.navbar-right#navbar-collapse
+            ul.nav.navbar-nav
+                li(ng-repeat='page in sitePages')
+                     a(href="/{{page.id}}", ng-click="setCurrentPage(page)") 
+                        |{{page.title}}
