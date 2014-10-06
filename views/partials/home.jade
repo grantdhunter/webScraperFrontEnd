@@ -4,6 +4,21 @@ div.container-fluid
             h1
                 |Try out the webScraper by filling in the form below
             form(name='form')
+                h4
+                    |This app was tested on 
+                    a(href='http://www.imdb.com/showtimes/?ref_=nv_tp_sh_3')
+                        |http://www.imdb.com/showtimes/?ref_=nv_tp_sh_3 
+                    |using the class 
+                    strong
+                        |item_list 
+                    |and 
+                    a(href='https://news.ycombinator.com/')
+                        |https://news.ycombinator.com/
+                    |using the class 
+                    strong
+                        |title 
+                    |. The scraper contains a premade module for gathering data from imdb.
+                    
                 div.form-group
                     label(for='site-url-input')
                         |Site URL 
@@ -23,7 +38,7 @@ div.container-fluid
                                 |URL Invalid
                     input(type='text', id='class-input', name='class', required, ng-model='scrape.class').form-control
                 h2
-                    |Custom Scraper Example
+                    |Custom Scraper Example for Hacker News
                 pre
                     |{{codeExample}}
                 h4
@@ -49,3 +64,4 @@ div.container-fluid
                 |Results
             pre
                 |{{result}}
+    img(src='/images/ajax-loader.gif', ng-show='waiting')#waiting

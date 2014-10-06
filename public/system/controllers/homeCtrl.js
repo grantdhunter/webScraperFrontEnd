@@ -1,6 +1,7 @@
 function homeCtrl($scope, $routeParams, scrapeData) {
 
     $scope.submit = function (scraper) {
+        $scope.waiting = true;
         scrapeData.get({
             url: scraper.url,
             class: scraper.class,
@@ -8,6 +9,7 @@ function homeCtrl($scope, $routeParams, scrapeData) {
         }, function (data) {
             console.log(data);
             $scope.result = JSON.stringify(data.data, null, 2);
+            $scope.waiting = false;
         });
     };
 
