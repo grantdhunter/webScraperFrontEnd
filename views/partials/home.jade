@@ -22,26 +22,11 @@ div.container-fluid
                             span.label.label-danger(ng-show="form.class.$error.text")
                                 |URL Invalid
                     input(type='text', id='class-input', name='class', required, ng-model='scrape.class').form-control
-                h2
-                    |Custom Scraper Example
-                pre
-                    |{{codeExample}}
-                h4
-                    |The modules has access to 
-                    strong 
-                        |cheerio
-                    |, 
-                    strong  
-                        |Q 
-                    |and 
-                    strong
-                        |request
-                    |. It must take one parameter that is a String containing html and must return a promise
                 div.form-group
                     label(for='scraper-module-input')
                         |Custome Scraper Module
-                    textarea(type='text', id='scraper-module-input', ng-model='scrape.function', rows='6').form-control
-                button(ng-click='submit(scrape)', ng-disabled='form.$invalid || !form.$dirty').btn.btn-primary
+                    textarea(type='text', id='scraper-module-input', ng-model='scrape.function').form-control
+                button(ng-click='submit(scrape)', ng-disabled='form.$invalid || !form.$dirty').btn.btn-default
                     |Submit
     div.row
         div.col-sm-12
