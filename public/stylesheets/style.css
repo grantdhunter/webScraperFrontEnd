@@ -1,0 +1,7 @@
+#waiting {
+    position: absolute;
+    top: 260px;
+    left: 440px;
+    z-index: 100;
+    width: 220px;
+}
