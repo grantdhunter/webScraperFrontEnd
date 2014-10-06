@@ -13,7 +13,8 @@
         "jade": "~1.3.0",
         "morgan": "~1.0.0",
         "nodemon": "^1.2.1",
-        "static-favicon": "~1.0.0"
+        "static-favicon": "~1.0.0",
+        "webScraper": "grantdhunter/webScraper"
     },
     "engines": {
         "node": "0.10.28"
