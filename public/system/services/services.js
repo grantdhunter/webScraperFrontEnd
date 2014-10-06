@@ -1,16 +1,28 @@
-var scraperServices = angular.module('scraperServices', ['ngResource']);
+var scraperServices = angular.module('scraperServices', []);
 
 scraperServices.factory('scrapeData',
-    function ($resource) {
-        return $resource('/scrape/', {}, {
-            query: {
-                method: 'GET',
-                isArray:true,
-                params: {
-                    url: 'url',
-                    class: 'class',
-                    function: 'function'
-                }
+    function ($rootScope) {
+
+        var socket = io.connect();
+        return {
+            on: function (eventName, callback) {
+                socket.on(eventName, function () {
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        callback.apply(socket, args);
+                    });
+                });
+            },
+            emit: function (eventName, data, callback) {
+                socket.emit(eventName, data, function () {
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        if (callback) {
+                            callback.apply(socket, args);
+                        }
+                    });
+                });
+
             }
-        });
+        };
     });
