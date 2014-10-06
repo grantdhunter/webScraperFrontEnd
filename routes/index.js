@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var scraper = require('../webScraper');
+var scraper = require('./webScraper');
 
 router.get('/partials/:name', function (req, res) {
     res.render('partials/' + req.params.name);
