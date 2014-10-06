@@ -21,6 +21,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/scrape', function(req, res, next){
+    res.setTimeout(5*60*1000, function(){
+        res.send(408);
+    });
+    next();
+});
+
 app.use('/', routes);
 
 /// catch 404 and forward to error handler
@@ -29,6 +36,7 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
+
 
 /// error handlers
 
