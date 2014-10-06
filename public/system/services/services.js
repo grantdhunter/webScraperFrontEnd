@@ -3,7 +3,7 @@ var scraperServices = angular.module('scraperServices', []);
 scraperServices.factory('scrapeData',
     function ($rootScope) {
 
-        var socket = io.connect('http://localhost');
+        var socket = io.connect();
         return {
             on: function (eventName, callback) {
                 socket.on(eventName, function () {
