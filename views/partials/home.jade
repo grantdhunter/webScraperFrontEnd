@@ -39,7 +39,7 @@ div.container-fluid
                     |. It must take one parameter that is a String containing html and must return a promise
                 div.form-group
                     label(for='scraper-module-input')
-                        |Custome Scraper Module
+                        |Custom Scraper Module
                     textarea(type='text', id='scraper-module-input', ng-model='scrape.function', rows='6').form-control
                 button(ng-click='submit(scrape)', ng-disabled='form.$invalid || !form.$dirty').btn.btn-primary
                     |Submit
