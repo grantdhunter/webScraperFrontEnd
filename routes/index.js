@@ -12,7 +12,15 @@ router.get('/partials/:name', function (req, res) {
 
 router.get('/scrape', function (req, res) {
 
-    eval("var crawlModule = "+req.query.function);
+    if (req.query.function) {
+        if (req.query.function.length !== 0) {
+            eval("var crawlModule = " + req.query.function);
+        } else {
+            var crawlModule = null;
+        }
+    } else {
+        var crawlModule = null;
+    }
     
     scraper.crawlForData(req.query.url,
         req.query.class,
