@@ -4,6 +4,8 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+var scraper = require('webScraper');
 var cheerio = require('cheerio');
 var request = require('request');
 var Q = require('q');
@@ -11,11 +13,15 @@ var Q = require('q');
 var routes = require('./routes/index');
 var app = express();
 
-var server = require('http').Server(app);
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  
+});
+
+
 var io = require('socket.io').listen(server);
 
-process.env['DEBUG'] = '-*';
-console.log(process.env['DEBUG']);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -28,12 +34,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/scrape', function (req, res, next) {
-    res.setTimeout(5 * 60 * 1000, function () {
-        res.send(408);
-    });
-    next();
-});
 
 app.use('/', routes);
 
@@ -60,6 +60,7 @@ io.on('connection', function (socket) {
         )
     });
 
+    socket.emit('connected',{connected:"connected"});
 });
 
 

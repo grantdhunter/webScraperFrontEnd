@@ -2,14 +2,17 @@ function homeCtrl($scope, $routeParams, scrapeData) {
 
     $scope.submit = function (scraper) {
         $scope.waiting = true;
-        scrapeData.emit('scrape', scraper, function(socket, arg){
+        scrapeData.emit('scrape', scraper, function (socket, arg) {
             console.log(socket);
         });
     };
-
-    scrapeData.on('scrape done', function(data) {
-        $scope.result = data;
-         $scope.waiting = false;
+    scrapeData.on('connect', function (data) {
+        $scope.result = "Connected";
+        console.log("connected");
+    });
+    scrapeData.on('scrape done', function (data) {
+        $scope.result = JSON.stringify(data, null, 2);;
+        $scope.waiting = false;
     });
     $scope.codeExample = "function (elem) {\n\
     var $ = cheerio.load(elem);\n\
